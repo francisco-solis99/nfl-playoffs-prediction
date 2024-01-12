@@ -1,0 +1,35 @@
+---
+import Team from "@/components/Team.astro";
+
+interface Props {
+  class?: string;
+  team1Id: string;
+  team2Id: string;
+}
+
+const { team1Id, team2Id, class: className } = Astro.props;
+---
+
+<article
+  class:list={[
+    "col-span-4",
+    "relative",
+    "grid",
+    "grid-cols-2",
+    "gap-x-1",
+    "text-white",
+    "rounded-lg",
+    "border-2",
+    "border-white",
+    "bg-cover",
+    "drop-shadow-lg",
+    "backdrop-blur-2xl",
+    "overflow-hidden",
+    className,
+  ]}
+  style="background-image: url('/noise.png');"
+>
+  <div class="absolute -z-10 inset-0 bg-gradient-to-b from-[#3E2F6E]/50 to-primary2/30"></div>
+  <Team teamId={team1Id} />
+  <Team teamId={team2Id} />
+</article>

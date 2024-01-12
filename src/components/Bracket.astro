@@ -1,0 +1,22 @@
+---
+import Match from "@/components/Match.astro";
+import type { RoundType } from "@/data/types/matches.types";
+import { getMatchesByRound } from "@/data/utils/matches";
+
+interface Props {
+  roundName: RoundType;
+  conference: "AFC" | "NFC";
+}
+
+const { roundName, conference } = Astro.props;
+
+const matches = getMatchesByRound({ roundName, conference });
+---
+
+<section class="grid grid-cols-12 gap-x-3.5">
+  {
+    matches.map(match => (
+      <Match team1Id={match.team1} team2Id={match.team2}/>
+    ))
+  }
+</section>
