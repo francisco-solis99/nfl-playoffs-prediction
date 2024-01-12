@@ -1,0 +1,74 @@
+[
+  {
+    "conference": "AFC",
+    "teams": [
+      {
+        "id": "HOU",
+        "seed": 4,
+        "info": {
+          "name": "Texans",
+          "city": "Houston",
+          "logo": "Hou"
+        }
+      },
+      {
+        "id": "CLE",
+        "seed": 5,
+        "info": {
+          "name": "Browns",
+          "city": "Cleveland",
+          "logo": "Cle"
+        }
+      },
+      {
+        "id": "MIA",
+        "seed": 5,
+        "info": {
+          "name": "Dolphins",
+          "city": "Miami",
+          "logo": "Mia"
+        }
+      },
+      {
+        "id": "KC",
+        "seed": 3,
+        "info": {
+          "name": "Chiefs",
+          "city": "Kansas City",
+          "logo": "Kc"
+        }
+      },
+      {
+        "id": "BUF",
+        "seed": 2,
+        "info": {
+          "name": "Bills",
+          "city": "Buffalo",
+          "logo": "Buf"
+        }
+      },
+      {
+        "id": "PIT",
+        "seed": 7,
+        "info": {
+          "name": "Steelers",
+          "city": "Pittsburgh",
+          "logo": "Pit"
+        }
+      },
+      {
+        "id": "BAL",
+        "seed": 1,
+        "info": {
+          "name": "Ravens",
+          "city": "Baltimore",
+          "logo": "Bal"
+        }
+      }
+    ]
+  },
+  {
+    "conference": "NFC",
+    "teams": []
+  }
+]
