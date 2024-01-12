@@ -1,0 +1,40 @@
+[
+  {
+    "round": "Wild Card",
+    "matches": {
+      "AFC": [
+        {
+          "id": 1,
+          "team1": "CLE",
+          "team2": "HOU",
+          "winner": null
+        },
+        {
+          "id": 2,
+          "team1": "MIA",
+          "team2": "KC",
+          "winner": null
+        },
+        {
+          "id": 3,
+          "team1": "PIT",
+          "team2": "BUF",
+          "winner": null
+        }
+      ]
+    }
+  },
+  {
+    "round": "Divisional",
+    "matches": {
+      "AFC": [
+        {
+          "id": 1,
+          "team1": null,
+          "team2": "BAL",
+          "winner": null
+        }
+      ]
+    }
+  }
+]
