@@ -1,0 +1,32 @@
+---
+import { getTeamById } from "@/data/utils/teams";
+let TeamLogo = null;
+
+interface Props {
+  teamId: string;
+}
+
+const { teamId } = Astro.props;
+const team = getTeamById({ id: teamId, conference: "AFC" });
+// TODO: validate the team if the teamId is null and be dynamic the conference logo
+
+try {
+  const module = await import(`./teams/${team?.id}.astro`);
+  TeamLogo = module.default;
+} catch (error) {
+  const afcModuleIcon = await import(`@/components/icons/AFC.astro`)
+  TeamLogo = afcModuleIcon.default
+}
+
+---
+
+<div class="py-3.5 flex flex-col justify-center items-center">
+  <span class="inline-block">
+    {
+      TeamLogo && <TeamLogo width={45} height={45}/>
+    }
+  </span>
+  <p class="uppercase font-bold">
+    {team?.id}
+  </p>
+</div>
