@@ -1,0 +1,28 @@
+---
+interface Props {
+  id?: string
+  class?: string
+  target?: string
+  url: string
+}
+
+const { url, target, class: className, ...rest } = Astro.props
+---
+
+<a href={url}
+  target=`${target ?? '_blank'}`
+  rel="noopener noreferrer"
+  class:list={[
+    "px-4",
+    "py-3",
+    "font-semibold",
+    "rounded-lg",
+    "border",
+    "border-white",
+    "text-white",
+    className
+  ]}
+  {...rest}
+>
+  <slot>
+</a>
