@@ -9,3 +9,15 @@ export function getTeamById({ id, conference }: { id: string, conference: "NFC" 
   const teamFound = conferenceTeams.find(team => team.id === id)
   return teamFound
 }
+
+export async function getTeamLogo({teamIdName, conference}: {teamIdName: string, conference: 'AFC' | 'NFC'}) {
+  let TeamLogo = null;
+  try {
+    const module = await import(`../../components/teams/${teamIdName}.astro`);
+    TeamLogo = module.default;
+  } catch (error) {
+    const conferenceModuleIcon = await import(`../../components/icons/${conference}.astro`);
+    TeamLogo = conferenceModuleIcon.default;
+  }
+  return TeamLogo
+}
