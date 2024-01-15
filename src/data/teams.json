@@ -69,6 +69,70 @@
   },
   {
     "conference": "NFC",
-    "teams": []
+    "teams": [
+      {
+        "id": "PHI",
+        "seed": 5,
+        "info": {
+          "name": "Eagles",
+          "city": "Philadelphia",
+          "logo": "Phi"
+        }
+      },
+      {
+        "id": "TB",
+        "seed": 4,
+        "info": {
+          "name": "Buccaneers",
+          "city": "Tampa Bay",
+          "logo": "Tb"
+        }
+      },
+      {
+        "id": "LA",
+        "seed": 6,
+        "info": {
+          "name": "Rams",
+          "city": "Los Angeles",
+          "logo": "La"
+        }
+      },
+      {
+        "id": "DET",
+        "seed": 3,
+        "info": {
+          "name": "Lions",
+          "city": "Detroit",
+          "logo": "Det"
+        }
+      },
+      {
+        "id": "GB",
+        "seed": 7,
+        "info": {
+          "name": "Packers",
+          "city": "Green Bay",
+          "logo": "Gb"
+        }
+      },
+      {
+        "id": "DAL",
+        "seed": 2,
+        "info": {
+          "name": "Cowboys",
+          "city": "Dallas",
+          "logo": "Dal"
+        }
+      },
+      {
+        "id": "SF",
+        "seed": 1,
+        "info": {
+          "name": "Niners",
+          "city": "San Francisco",
+          "logo": "Sf"
+        }
+      }
+    ]
   }
 ]
