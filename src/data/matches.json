@@ -1,6 +1,7 @@
 [
   {
     "round": "Wild Card",
+    "slug": "wild-card",
     "matches": {
       "AFC": [
         {
@@ -21,17 +22,58 @@
           "team2": "BUF",
           "winner": null
         }
+      ],
+      "NFC": [
+        {
+          "id": 4,
+          "team1": "PHI",
+          "team2": "TB",
+          "winner": null
+        },
+        {
+          "id": 5,
+          "team1": "LA",
+          "team2": "DET",
+          "winner": null
+        },
+        {
+          "id": 6,
+          "team1": "GB",
+          "team2": "DAL",
+          "winner": null
+        }
       ]
     }
   },
   {
     "round": "Divisional",
+    "slug": "divisional",
     "matches": {
       "AFC": [
         {
           "id": 1,
           "team1": null,
           "team2": "BAL",
+          "winner": null
+        },
+        {
+          "id": 2,
+          "team1": null,
+          "team2": null,
+          "winner": null
+        }
+      ],
+      "NFC": [
+        {
+          "id": 3,
+          "team1": null,
+          "team2": "SF",
+          "winner": null
+        },
+        {
+          "id": 4,
+          "team1": null,
+          "team2": null,
           "winner": null
         }
       ]
