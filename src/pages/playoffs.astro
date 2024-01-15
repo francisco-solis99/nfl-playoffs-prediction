@@ -1,0 +1,70 @@
+---
+import NFL from "@/components/icons/NFL.astro";
+import Layout from "../layouts/Layout.astro";
+import Bracket from "@/components/Bracket.astro";
+import Button from "@/components/Button.astro";
+---
+
+<style>
+  .layer__background::before {
+    --line: hsl(0 0% 95% / 0.20);
+    content: "";
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: -1;
+    background: linear-gradient(90deg, var(--line) 1px, transparent 1px 10vmin) 50% -5vmin / 10vmin 10vmin, linear-gradient(var(--line) 1px, transparent 1px 10vmin) 50% -5vmin / 10vmin 10vmin;
+    top: 0;
+    mask: linear-gradient(-15deg, transparent 30%, white);
+  }
+</style>
+
+<Layout
+  title="Brackets NFL Playoffs 2024"
+  description="Demuestra que sabes de NFL y presumelo con tus amigos, ve y predice los brackets de los NFL playoffs 2024"
+>
+  <div
+    class="layer__background relative z-10 min-h-screen py-6 bg-gradient-to-b from-[#220242] via-[#100B34] to-[#07091B] text-white"
+  >
+    <div class="max-w-[1440px] mx-auto">
+      <header class="text-center">
+        <span class="inline-block">
+          <NFL />
+        </span>
+        <h1 class="mt-1.5 font-black text-4xl">
+          NFL Playoffs 2024
+        </h1>
+      </header>
+
+      <main class="mt-12">
+        <!-- WildCard Round -->
+        <section class="grid grid-cols-2 gap-x-16">
+          <Bracket roundName="wild-card" conference="AFC" colStart={1} />
+          <Bracket roundName="wild-card" conference="NFC" colStart={1} />
+        </section>
+
+        <!-- Divisional Round -->
+        <section class="mt-6 grid grid-cols-2 gap-x-16">
+          <Bracket roundName="divisional" conference="AFC" colStart={3} />
+          <Bracket roundName="divisional" conference="NFC" colStart={3} />
+        </section>
+
+        <div class="mt-10 flex justify-center">
+          <Button
+            url="/predicciones/wild-card/1"
+            target="_self"
+            class="text-xl ease-out transition-[background] hover:bg-primary1 drop-shadow-[0_8px_15px_#C5425F]"
+          >
+            Predecir
+          </Button>
+        </div>
+
+        <!-- Conference Round -->
+
+        <!-- Super Bowl -->
+      </main>
+
+      <footer></footer>
+    </div>
+  </div>
+</Layout>
