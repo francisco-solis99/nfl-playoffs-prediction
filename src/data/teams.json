@@ -8,7 +8,8 @@
         "info": {
           "name": "Texans",
           "city": "Houston",
-          "logo": "Hou"
+          "logo": "Hou",
+          "colorHex": "001D2D"
         }
       },
       {
@@ -17,7 +18,8 @@
         "info": {
           "name": "Browns",
           "city": "Cleveland",
-          "logo": "Cle"
+          "logo": "Cle",
+          "colorHex": "311E00"
         }
       },
       {
@@ -26,7 +28,8 @@
         "info": {
           "name": "Dolphins",
           "city": "Miami",
-          "logo": "Mia"
+          "logo": "Mia",
+          "colorHex": "27989F"
         }
       },
       {
@@ -35,7 +38,8 @@
         "info": {
           "name": "Chiefs",
           "city": "Kansas City",
-          "logo": "Kc"
+          "logo": "Kc",
+          "colorHex": "E12A3D"
         }
       },
       {
@@ -44,7 +48,8 @@
         "info": {
           "name": "Bills",
           "city": "Buffalo",
-          "logo": "Buf"
+          "logo": "Buf",
+          "colorHex": "00338E"
         }
       },
       {
@@ -53,7 +58,8 @@
         "info": {
           "name": "Steelers",
           "city": "Pittsburgh",
-          "logo": "Pit"
+          "logo": "Pit",
+          "colorHex": "000000"
         }
       },
       {
@@ -62,7 +68,8 @@
         "info": {
           "name": "Ravens",
           "city": "Baltimore",
-          "logo": "Bal"
+          "logo": "Bal",
+          "colorHex": "241773"
         }
       }
     ]
@@ -76,7 +83,8 @@
         "info": {
           "name": "Eagles",
           "city": "Philadelphia",
-          "logo": "Phi"
+          "logo": "Phi",
+          "colorHex": "25545A"
         }
       },
       {
@@ -85,7 +93,8 @@
         "info": {
           "name": "Buccaneers",
           "city": "Tampa Bay",
-          "logo": "Tb"
+          "logo": "Tb",
+          "colorHex": "A51933"
         }
       },
       {
@@ -94,7 +103,8 @@
         "info": {
           "name": "Rams",
           "city": "Los Angeles",
-          "logo": "La"
+          "logo": "La",
+          "colorHex": "013692"
         }
       },
       {
@@ -103,7 +113,8 @@
         "info": {
           "name": "Lions",
           "city": "Detroit",
-          "logo": "Det"
+          "logo": "Det",
+          "colorHex": "0076B6"
         }
       },
       {
@@ -112,7 +123,8 @@
         "info": {
           "name": "Packers",
           "city": "Green Bay",
-          "logo": "Gb"
+          "logo": "Gb",
+          "colorHex": "203731"
         }
       },
       {
@@ -121,7 +133,8 @@
         "info": {
           "name": "Cowboys",
           "city": "Dallas",
-          "logo": "Dal"
+          "logo": "Dal",
+          "colorHex": "0D2547"
         }
       },
       {
@@ -130,7 +143,8 @@
         "info": {
           "name": "Niners",
           "city": "San Francisco",
-          "logo": "Sf"
+          "logo": "Sf",
+          "colorHex": "AA0001"
         }
       }
     ]

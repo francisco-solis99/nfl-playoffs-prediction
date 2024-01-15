@@ -5,6 +5,7 @@ export type Team = {
     name: string,
     city: string,
     logo: string,
+    colorHex: string,
   }
 }
 
