@@ -5,14 +5,16 @@ interface Props {
   class?: string;
   team1Id: string;
   team2Id: string;
+  colStart: number;
+  colEnd: number;
+  conference: "AFC" | "NFC";
 }
 
-const { team1Id, team2Id, class: className } = Astro.props;
+const { team1Id, team2Id, conference, class: className, colStart, colEnd } = Astro.props;
 ---
 
 <article
   class:list={[
-    "col-span-4",
     "relative",
     "grid",
     "grid-cols-2",
@@ -27,9 +29,9 @@ const { team1Id, team2Id, class: className } = Astro.props;
     "overflow-hidden",
     className,
   ]}
-  style="background-image: url('/noise.png');"
+  style=`background-image: url('/noise.png'); grid-column: ${colStart} / ${colEnd} `
 >
   <div class="absolute -z-10 inset-0 bg-gradient-to-b from-[#3E2F6E]/50 to-primary2/30"></div>
-  <Team teamId={team1Id} />
-  <Team teamId={team2Id} />
+  <Team teamId={team1Id} conference={conference} />
+  <Team teamId={team2Id} conference={conference} />
 </article>
