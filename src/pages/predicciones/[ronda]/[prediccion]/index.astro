@@ -1,0 +1,129 @@
+---
+export const prerender = false;
+
+import type { RoundTypeSlug } from "@/data/types/matches.types";
+import Layout from "@/layouts/Layout.astro";
+import { getMatchById } from "@/data/utils/matches";
+import { getTeamById, getTeamLogo } from "@/data/utils/teams";
+
+const { ronda: round, prediccion: prediction } = Astro.params;
+// validate
+if (!prediction || !round) return Astro.redirect("/404");
+
+const roundType = round as RoundTypeSlug;
+const numPredictionMatch = Number(prediction);
+
+// Get the match info
+const matchInfo = getMatchById({
+  roundName: roundType,
+  id: numPredictionMatch,
+});
+
+if (!matchInfo) return Astro.redirect("/404");
+
+const { match, conference } = matchInfo;
+const confereceType = conference as "AFC" | "NFC";
+
+// get the teams info
+const teamsMatch = [match.team1, match.team2];
+const teamsInfoPromises = teamsMatch.map(async (teamId) => {
+  const teamInfo = getTeamById({ id: teamId, conference: confereceType });
+  const TeamLogo = await getTeamLogo({
+    teamIdName: teamId,
+    conference: confereceType,
+  });
+  return {
+    teamInfo,
+    teamLogoComponent: TeamLogo,
+  };
+});
+
+const teamsInfo = await Promise.all(teamsInfoPromises);
+
+
+// create the form with eah option ✅
+// Get the astro icons fro teams dynamically ✅
+// create dynamically the options ✅
+// Get the color of the team ✅
+// style to get the color when select the option ✅
+// Use astro cookies and astro redirect when submit each prediction
+// Use a react component for the form maybe
+---
+
+<!-- TODO: stepper and using the css variables -->
+<Layout
+  title="Predicciones Brackets NFL Playoffs 2024"
+  description="Predice cada uno de los juegos de playoffs seleccionando a los ganadores de cada encuentro"
+>
+  <div>
+    <h1
+      class=`px-8 py-5 font-monstserrat absolute z-10 left-1/2 -translate-x-1/2 top-10 text-white text-4xl font-bold bg-transparent
+      after:content-[''] after:absolute after:inset-1 after:rounded-xl after:bg-indigo-950 after:border after:border-1 after:-z-10`
+    >
+      Predicción
+    </h1>
+    <main class="relative">
+      <form>
+        <fieldset>
+          <legend class="sr-only">Selecciona tu pick para esté duelo</legend>
+          <div class="min-h-screen grid grid-cols-2">
+            <!-- 2 Options-->
+            {
+              teamsInfo.map((team) => {
+                const TeamLogo = team.teamLogoComponent;
+                return (
+                  <section style={`--option-bg: #${team.teamInfo?.info.colorHex}`} class={`option__team-card grayscale transition-all delay-75 ease-out hover:filter-none flex flex-col justify-center items-center h-full`}>
+                    <span class="option__logo inline-block transition-transform ease-out">
+                      <TeamLogo width={310} height={310} />
+                    </span>
+                    <input
+                      type="radio"
+                      class="sr-only"
+                      name="pick"
+                      id={team.teamInfo?.id}
+                      value={team.teamInfo?.id}
+                      required
+                    />
+                    <label for={team.teamInfo?.id} class="mt-4">
+                      <div
+                        role="button"
+                        class="inline-block text-xl rounded-xl px-2 py-1.5 border-2 cursor-pointer hover:brightness-95"
+                      >
+                        <span class="font-bold">Seleccionar</span>
+                      </div>
+                    </label>
+                  </section>
+                )
+              })
+            }
+          </div>
+        </fieldset>
+        <button
+          type="submit"
+          class="text-lg px-4 py-2 font-bold border border-1 absolute right-5 top-7 rounded-full bg-gradient-to-b text-white focus:ring-2 focus:ring-blue-400 hover:shadow-xl transition duration-200  hover:drop-shadow-[0_2px_4px_#fff]"
+          title="Next"
+        >
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M2 12h20m-9-9l9 9l-9 9"/>
+            </svg>
+          </span>
+        </button>
+      </form>
+    </main>
+  </div>
+</Layout>
+
+
+<style>
+  .option__team-card {
+    background-color: var(--option-bg);
+  }
+
+  .option__team-card:has(input[type="radio"]:checked) {
+    filter: none;
+  }
+
+  .option__logo:has(+ input[type="radio"]:checked) {
+    transform: scale(1.15);
+  }
+</style>
