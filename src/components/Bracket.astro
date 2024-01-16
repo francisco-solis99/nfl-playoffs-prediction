@@ -11,6 +11,8 @@ interface Props {
 
 const { roundName, conference, colStart = 1 } = Astro.props;
 const matches = getMatchesByRoundConference({ roundName, conference });
+
+
 ---
 
 <div class="grid grid-cols-12 gap-x-3.5">
@@ -20,8 +22,11 @@ const matches = getMatchesByRoundConference({ roundName, conference });
       const matchColEnd = matchColStart + 4
       return (
         <Match
+          roundName={roundName}
+          matchId={match.id}
           team1Id={match.team1} team2Id={match.team2}
           conference={conference}
+          winner={match.winner}
           colStart={matchColStart}
           colEnd={matchColEnd}
         />

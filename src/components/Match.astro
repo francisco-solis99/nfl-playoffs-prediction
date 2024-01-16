@@ -1,16 +1,27 @@
 ---
+import type { PredictionPick } from "@/data/types/matches.types";
 import Team from "@/components/Team.astro";
+
 
 interface Props {
   class?: string;
+  matchId: number;
   team1Id: string;
   team2Id: string;
+  roundName: string;
+  winner: string | null;
   colStart: number;
   colEnd: number;
   conference: "AFC" | "NFC";
 }
 
-const { team1Id, team2Id, conference, class: className, colStart, colEnd } = Astro.props;
+const { team1Id, team2Id, conference, matchId, roundName, winner, class: className, colStart, colEnd } = Astro.props;
+
+
+const predictions: PredictionPick[] | [] = Astro.cookies.get(`playoffs-prediction:${roundName}`)?.json() ?? []
+
+const predictionPick: PredictionPick | null = predictions.find((prediction: PredictionPick) => prediction.matchId === matchId) ?? null
+const stylePick = "bg-green-300/10 drop-shadow-[0_10px_20px_#527853]"
 ---
 
 <article
@@ -32,6 +43,20 @@ const { team1Id, team2Id, conference, class: className, colStart, colEnd } = Ast
   style=`background-image: url('/noise.png'); grid-column: ${colStart} / ${colEnd} `
 >
   <div class="absolute -z-10 inset-0 bg-gradient-to-b from-[#3E2F6E]/50 to-primary2/30"></div>
-  <Team teamId={team1Id} conference={conference} />
-  <Team teamId={team2Id} conference={conference} />
+  <!-- Team 1 -->
+  <div
+    class={`flex justify-center items-center py-3.5
+    ${predictionPick?.pickSelected === team1Id ? stylePick : ''}
+    ${winner && winner !== team1Id ? 'grayscale bg-slate-200/20' : ''}`}
+  >
+    <Team teamId={team1Id} conference={conference} />
+  </div>
+  <!-- Team 2 -->
+  <div
+    class=`flex justify-center items-center py-3.5
+    ${predictionPick?.pickSelected === team2Id ? stylePick : ''}
+    ${winner && winner !== team2Id ? 'grayscale bg-slate-200/20' : ''}`
+  >
+    <Team teamId={team2Id} conference={conference} />
+  </div>
 </article>
