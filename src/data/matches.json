@@ -8,19 +8,19 @@
           "id": 1,
           "team1": "CLE",
           "team2": "HOU",
-          "winner": null
+          "winner": "HOU"
         },
         {
           "id": 2,
           "team1": "MIA",
           "team2": "KC",
-          "winner": null
+          "winner": "KC"
         },
         {
           "id": 3,
           "team1": "PIT",
           "team2": "BUF",
-          "winner": null
+          "winner": "BUF"
         }
       ],
       "NFC": [
@@ -28,19 +28,19 @@
           "id": 4,
           "team1": "PHI",
           "team2": "TB",
-          "winner": null
+          "winner": "TB"
         },
         {
           "id": 5,
           "team1": "LA",
           "team2": "DET",
-          "winner": null
+          "winner": "DET"
         },
         {
           "id": 6,
           "team1": "GB",
           "team2": "DAL",
-          "winner": null
+          "winner": "GB"
         }
       ]
     }
@@ -52,28 +52,28 @@
       "AFC": [
         {
           "id": 1,
-          "team1": null,
+          "team1": "HOU",
           "team2": "BAL",
           "winner": null
         },
         {
           "id": 2,
-          "team1": null,
-          "team2": null,
+          "team1": "KC",
+          "team2": "BUF",
           "winner": null
         }
       ],
       "NFC": [
         {
           "id": 3,
-          "team1": null,
+          "team1": "GB",
           "team2": "SF",
           "winner": null
         },
         {
           "id": 4,
-          "team1": null,
-          "team2": null,
+          "team1": "TB",
+          "team2": "DET",
           "winner": null
         }
       ]
