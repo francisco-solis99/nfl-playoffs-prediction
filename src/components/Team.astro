@@ -8,17 +8,19 @@ interface Props {
 }
 
 const { teamId, conference } = Astro.props;
-console.log(teamId)
 const team = getTeamById({ id: teamId, conference });
-
 const TeamLogo = await getTeamLogo({teamIdName: team?.id, conference})
 ---
 
-<div class="py-3.5 flex flex-col justify-center items-center">
+<article class="flex flex-col justify-center items-center">
   <span class="inline-block">
     {TeamLogo && <TeamLogo width={45} height={45} />}
   </span>
-  <p class="uppercase font-bold">
-    {team?.id}
-  </p>
-</div>
+  {
+    team && (
+      <p class="uppercase font-bold">
+        {team?.id}
+      </p>
+    )
+  }
+</article>
