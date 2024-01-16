@@ -1,13 +1,13 @@
 ---
 export const prerender = false;
 
-import type { RoundTypeSlug } from "@/data/types/matches.types";
-import Layout from "@/layouts/Layout.astro";
-import { getMatchById } from "@/data/utils/matches";
+import type { RoundTypeSlug, PredictionPick } from "@/data/types/matches.types";
+import { getMatchById, getTotalMatchesByRound } from "@/data/utils/matches";
 import { getTeamById, getTeamLogo } from "@/data/utils/teams";
+import Layout from "@/layouts/Layout.astro";
 
 const { ronda: round, prediccion: prediction } = Astro.params;
-// validate
+// Validate
 if (!prediction || !round) return Astro.redirect("/404");
 
 const roundType = round as RoundTypeSlug;
@@ -40,13 +40,60 @@ const teamsInfoPromises = teamsMatch.map(async (teamId) => {
 
 const teamsInfo = await Promise.all(teamsInfoPromises);
 
+// handle the submit of the form
+const cookieKey = `playoffs-prediction:${round}`
+const picks: PredictionPick[] | [] = Astro.cookies.get(cookieKey)?.json() ?? [];
+const totalMatches = getTotalMatchesByRound({roundName: roundType})
+
+if(Astro.request.method === 'POST') {
+
+  try {
+    const data = await Astro.request.formData()
+    const pick = data.get('pick')
+    if(typeof pick !== 'string') throw new Error('No answer provided')
+
+    const pickToSet = {
+      round,
+      matchId: numPredictionMatch,
+      pickSelected: pick,
+    }
+    picks[numPredictionMatch - 1] = pickToSet;
+
+    Astro.cookies.set(cookieKey, JSON.stringify(picks), {
+      maxAge: 60 * 60,
+      path: '/',
+      sameSite: true,
+      httpOnly: true,
+    })
+
+  } catch (error) {
+    if (error instanceof Error) {
+			console.error(error.message)
+		}
+  }
+
+  // check when is the last match of that round, maybe a method of matches saying the round name
+  if(numPredictionMatch + 1 > totalMatches) return Astro.redirect('/playoffs')
+  return Astro.redirect(`/predicciones/${round}/${numPredictionMatch + 1}`)
+}
+
 
 // create the form with eah option ✅
 // Get the astro icons fro teams dynamically ✅
 // create dynamically the options ✅
 // Get the color of the team ✅
 // style to get the color when select the option ✅
-// Use astro cookies and astro redirect when submit each prediction
+// Use astro cookies and astro redirect when submit each prediction ✅
+// Use view transitions API for Astro ✅
+// See the results fro predictions ✅
+// Type the prediction object ✅
+// Redirect when finish to the playoffs page ✅
+// Componetized
+// add the option to edit the pick in he playoffs page
+// responsive design
+// add the trophy for each round
+// add the results (correct picks)
+// add some fireworks when scroll to the superbowl (for scroll maybe add the results at the beginning)
 // Use a react component for the form maybe
 ---
 
@@ -63,7 +110,7 @@ const teamsInfo = await Promise.all(teamsInfoPromises);
       Predicción
     </h1>
     <main class="relative">
-      <form>
+      <form method="POST">
         <fieldset>
           <legend class="sr-only">Selecciona tu pick para esté duelo</legend>
           <div class="min-h-screen grid grid-cols-2">
@@ -87,9 +134,9 @@ const teamsInfo = await Promise.all(teamsInfoPromises);
                     <label for={team.teamInfo?.id} class="mt-4">
                       <div
                         role="button"
-                        class="inline-block text-xl rounded-xl px-2 py-1.5 border-2 cursor-pointer hover:brightness-95"
+                        class="inline-block text-xl rounded-xl px-2 py-1.5 border-2 cursor-pointer transition-[filter] duration-200  hover:drop-shadow-[0_1px_8px_#fff]"
                       >
-                        <span class="font-bold">Seleccionar</span>
+                        <span class="font-bold select-none">Seleccionar</span>
                       </div>
                     </label>
                   </section>
@@ -98,9 +145,9 @@ const teamsInfo = await Promise.all(teamsInfoPromises);
             }
           </div>
         </fieldset>
-        <button
+         <button
           type="submit"
-          class="text-lg px-4 py-2 font-bold border border-1 absolute right-5 top-7 rounded-full bg-gradient-to-b text-white focus:ring-2 focus:ring-blue-400 hover:shadow-xl transition duration-200  hover:drop-shadow-[0_2px_4px_#fff]"
+          class="text-lg px-4 py-2 font-bold border border-1 absolute right-5 top-7 rounded-full bg-gradient-to-b text-white transition-[filter] duration-75  hover:drop-shadow-[0_2px_4px_#fff]"
           title="Next"
         >
           <span>
@@ -125,5 +172,6 @@ const teamsInfo = await Promise.all(teamsInfoPromises);
 
   .option__logo:has(+ input[type="radio"]:checked) {
     transform: scale(1.15);
+    filter: drop-shadow(0 8px 20px #000);
   }
 </style>
