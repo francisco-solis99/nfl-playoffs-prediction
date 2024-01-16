@@ -1,4 +1,6 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
+
 interface Props {
 	description: string;
 	title: string;
@@ -17,6 +19,8 @@ const { currentLocale } = Astro;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<title>{title}</title>
 		<slot name="preload" />
+
+		<ViewTransitions />
 	</head>
 
 	<body>
