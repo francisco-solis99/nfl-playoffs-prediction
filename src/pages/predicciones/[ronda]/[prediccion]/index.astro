@@ -91,7 +91,7 @@ if(Astro.request.method === 'POST') {
 >
   <div>
     <h1
-      class=`px-8 py-5 font-monstserrat absolute z-10 left-1/2 -translate-x-1/2 top-10 text-white text-4xl font-bold bg-transparent
+      class=`hidden sm:inline-block px-8 py-5 font-monstserrat absolute z-10 left-1/2 -translate-x-1/2 top-10 text-white text-4xl font-bold bg-transparent
       after:content-[''] after:absolute after:inset-1 after:rounded-xl after:bg-indigo-950 after:border after:border-1 after:-z-10`
     >
       Predicción
@@ -100,7 +100,7 @@ if(Astro.request.method === 'POST') {
       <form method="POST">
         <fieldset>
           <legend class="sr-only">Selecciona tu pick para esté duelo</legend>
-          <div class="min-h-screen grid grid-cols-2">
+          <div class="min-h-screen grid sm:grid-cols-2">
             <!-- 2 Options-->
             {
               teamsMatch.map((teamId) => {

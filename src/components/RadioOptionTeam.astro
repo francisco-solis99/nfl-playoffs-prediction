@@ -19,9 +19,9 @@ const TeamLogo = await getTeamLogo({ teamIdName: teamId, conference });
 ---
 
 
-<section style={`--option-bg: #${colorTeam}`} class={`option__team-card grayscale transition-all delay-75 ease-out hover:filter-none flex flex-col justify-center items-center h-full`}>
+<section style={`--option-bg: #${colorTeam}`} class={`option__team-card py-8 sm:py-0 grayscale transition-all delay-75 ease-out hover:filter-none flex flex-col justify-center items-center h-full`}>
   <span class="option__logo inline-block transition-transform ease-out">
-    <TeamLogo width={310} height={310} />
+    <TeamLogo class:list={`w-56 sm:w-auto h-56 h-auto`} width={310} height={310} />
   </span>
   <input
     type="radio"
@@ -34,7 +34,7 @@ const TeamLogo = await getTeamLogo({ teamIdName: teamId, conference });
   <label for={teamId} class="mt-4">
     <div
       role="button"
-      class="inline-block text-xl rounded-xl px-2 py-1.5 border-2 cursor-pointer transition-[filter] duration-200  hover:drop-shadow-[0_1px_8px_#fff]"
+      class="inline-block text-lg sm:text-xl rounded-xl px-2 py-1.5 border-2 cursor-pointer transition-[filter] duration-200 hover:drop-shadow-[0_1px_8px_#fff]"
     >
       <span class="font-bold select-none">Seleccionar</span>
     </div>
