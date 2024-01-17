@@ -1,5 +1,7 @@
 ---
 import NFL from "@/components/icons/NFL.astro";
+import WildCard from "@/components/icons/WildCard.astro";
+import Divisional from "@/components/icons/Divisional.astro";
 import Layout from "../layouts/Layout.astro";
 import Bracket from "@/components/Bracket.astro";
 import Button from "@/components/Button.astro";
@@ -38,14 +40,16 @@ import Button from "@/components/Button.astro";
 
       <main class="mt-12">
         <!-- WildCard Round -->
-        <section class="grid grid-cols-2 gap-x-16">
+        <section class="grid grid-cols-[1fr_auto_1fr] gap-x-16">
           <Bracket roundName="wild-card" conference="AFC" colStart={1} />
+          <WildCard />
           <Bracket roundName="wild-card" conference="NFC" colStart={1} />
         </section>
 
         <!-- Divisional Round -->
-        <section class="mt-6 grid grid-cols-2 gap-x-16">
+        <section class="mt-6 grid grid-cols-[1fr_auto_1fr] gap-x-16">
           <Bracket roundName="divisional" conference="AFC" colStart={3} />
+          <Divisional />
           <Bracket roundName="divisional" conference="NFC" colStart={3} />
         </section>
 
