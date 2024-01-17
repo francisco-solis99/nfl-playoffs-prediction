@@ -3,8 +3,8 @@ export const prerender = false;
 
 import type { RoundTypeSlug, PredictionPick } from "@/data/types/matches.types";
 import { getMatchById, getTotalMatchesByRound } from "@/data/utils/matches";
-import { getTeamById, getTeamLogo } from "@/data/utils/teams";
 import Layout from "@/layouts/Layout.astro";
+import RadioOptionTeam from "@/components/RadioOptionTeam.astro";
 
 const { ronda: round, prediccion: prediction } = Astro.params;
 // Validate
@@ -26,19 +26,6 @@ const confereceType = conference as "AFC" | "NFC";
 
 // get the teams info
 const teamsMatch = [match.team1, match.team2];
-const teamsInfoPromises = teamsMatch.map(async (teamId) => {
-  const teamInfo = getTeamById({ id: teamId, conference: confereceType });
-  const TeamLogo = await getTeamLogo({
-    teamIdName: teamId,
-    conference: confereceType,
-  });
-  return {
-    teamInfo,
-    teamLogoComponent: TeamLogo,
-  };
-});
-
-const teamsInfo = await Promise.all(teamsInfoPromises);
 
 // handle the submit of the form
 const cookieKey = `playoffs-prediction:${round}`
@@ -88,10 +75,10 @@ if(Astro.request.method === 'POST') {
 // See the results fro predictions ✅
 // Type the prediction object ✅
 // Redirect when finish to the playoffs page ✅
-// Componetized
-// add the option to edit the pick in he playoffs page
+// Componetized ✅
+// add the trophy for each round ✅
 // responsive design
-// add the trophy for each round
+// add the option to edit the pick in he playoffs page
 // add the results (correct picks)
 // add some fireworks when scroll to the superbowl (for scroll maybe add the results at the beginning)
 // Use a react component for the form maybe
@@ -116,30 +103,9 @@ if(Astro.request.method === 'POST') {
           <div class="min-h-screen grid grid-cols-2">
             <!-- 2 Options-->
             {
-              teamsInfo.map((team) => {
-                const TeamLogo = team.teamLogoComponent;
+              teamsMatch.map((teamId) => {
                 return (
-                  <section style={`--option-bg: #${team.teamInfo?.info.colorHex}`} class={`option__team-card grayscale transition-all delay-75 ease-out hover:filter-none flex flex-col justify-center items-center h-full`}>
-                    <span class="option__logo inline-block transition-transform ease-out">
-                      <TeamLogo width={310} height={310} />
-                    </span>
-                    <input
-                      type="radio"
-                      class="sr-only"
-                      name="pick"
-                      id={team.teamInfo?.id}
-                      value={team.teamInfo?.id}
-                      required
-                    />
-                    <label for={team.teamInfo?.id} class="mt-4">
-                      <div
-                        role="button"
-                        class="inline-block text-xl rounded-xl px-2 py-1.5 border-2 cursor-pointer transition-[filter] duration-200  hover:drop-shadow-[0_1px_8px_#fff]"
-                      >
-                        <span class="font-bold select-none">Seleccionar</span>
-                      </div>
-                    </label>
-                  </section>
+                  <RadioOptionTeam teamId={teamId} conference={confereceType}/>
                 )
               })
             }
@@ -159,19 +125,3 @@ if(Astro.request.method === 'POST') {
     </main>
   </div>
 </Layout>
-
-
-<style>
-  .option__team-card {
-    background-color: var(--option-bg);
-  }
-
-  .option__team-card:has(input[type="radio"]:checked) {
-    filter: none;
-  }
-
-  .option__logo:has(+ input[type="radio"]:checked) {
-    transform: scale(1.15);
-    filter: drop-shadow(0 8px 20px #000);
-  }
-</style>

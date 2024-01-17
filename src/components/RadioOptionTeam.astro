@@ -1,0 +1,60 @@
+---
+import { getTeamLogo, getTeamById } from "@/data/utils/teams";
+
+interface Props {
+  teamId: string,
+  conference: 'AFC' | 'NFC'
+}
+
+const { teamId, conference} = Astro.props
+
+// Get the team info
+const team = getTeamById({ id: teamId, conference });
+const { colorHex: colorTeam = '#000' } = team?.info ?? {};
+
+// Component Logo
+const TeamLogo = await getTeamLogo({ teamIdName: teamId, conference });
+
+
+---
+
+
+<section style={`--option-bg: #${colorTeam}`} class={`option__team-card grayscale transition-all delay-75 ease-out hover:filter-none flex flex-col justify-center items-center h-full`}>
+  <span class="option__logo inline-block transition-transform ease-out">
+    <TeamLogo width={310} height={310} />
+  </span>
+  <input
+    type="radio"
+    class="sr-only"
+    name="pick"
+    id={teamId}
+    value={teamId}
+    required
+  />
+  <label for={teamId} class="mt-4">
+    <div
+      role="button"
+      class="inline-block text-xl rounded-xl px-2 py-1.5 border-2 cursor-pointer transition-[filter] duration-200  hover:drop-shadow-[0_1px_8px_#fff]"
+    >
+      <span class="font-bold select-none">Seleccionar</span>
+    </div>
+  </label>
+</section>
+
+
+
+
+<style>
+  .option__team-card {
+    background-color: var(--option-bg);
+  }
+
+  .option__team-card:has(input[type="radio"]:checked) {
+    filter: none;
+  }
+
+  .option__logo:has(+ input[type="radio"]:checked) {
+    transform: scale(1.15);
+    filter: drop-shadow(0 8px 20px #000);
+  }
+</style>
