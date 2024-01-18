@@ -1,4 +1,6 @@
 ---
+export const prerender = false;
+
 import type { PredictionPick } from "@/data/types/matches.types";
 import Team from "@/components/Team.astro";
 
@@ -17,15 +19,18 @@ interface Props {
 
 const { team1Id, team2Id, conference, matchId, roundName, winner, class: className, colStart, colEnd } = Astro.props;
 
-if (Astro.cookies.has(`playoffs-prediction:${roundName}`)) {
-  console.log('Exists the cookie 🍪')
-  const cookie = Astro.cookies.get(`playoffs-prediction:${roundName}`)
-  console.log(cookie)
-}
-const predictions: PredictionPick[] | [] = Astro.cookies.get(`playoffs-prediction:${roundName}`)?.json() ?? []
+const cookieKey = `playoffs-prediction:${roundName}`
 
-const predictionPick: PredictionPick | null = predictions.find((prediction: PredictionPick) => prediction.matchId === matchId) ?? null
+let predictions: PredictionPick[] | [] = [];
+let predictionPick: PredictionPick | null = null;
 const stylePick = "bg-green-300/10 drop-shadow-[0_10px_20px_#527853]"
+
+if (Astro.cookies.has(cookieKey)) {
+  console.log('Exists the cookie 🍪')
+  predictions = Astro.cookies.get(`playoffs-prediction:${roundName}`)?.json() ?? []
+  predictionPick = predictions.find((prediction: PredictionPick) => prediction.matchId === matchId) ?? null
+}
+
 ---
 
 <article
