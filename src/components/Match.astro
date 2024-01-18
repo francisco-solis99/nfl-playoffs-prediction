@@ -45,17 +45,13 @@ const stylePick = "bg-green-300/10 drop-shadow-[0_10px_20px_#527853]"
   <div class="absolute -z-10 inset-0 bg-gradient-to-b from-[#3E2F6E]/50 to-primary2/30"></div>
   <!-- Team 1 -->
   <div
-    class={`flex justify-center items-center py-3.5
-    ${predictionPick?.pickSelected === team1Id ? stylePick : ''}
-    ${winner && winner !== team1Id ? 'grayscale bg-slate-200/20' : ''}`}
+    class={`flex justify-center items-center py-3.5 ${predictionPick?.pickSelected === team1Id ? stylePick : ''} ${winner && winner !== team1Id ? 'grayscale bg-slate-200/20' : ''}`}
   >
     <Team teamId={team1Id} conference={conference} />
   </div>
   <!-- Team 2 -->
   <div
-    class=`flex justify-center items-center py-3.5
-    ${predictionPick?.pickSelected === team2Id ? stylePick : ''}
-    ${winner && winner !== team2Id ? 'grayscale bg-slate-200/20' : ''}`
+    class=`flex justify-center items-center py-3.5 ${predictionPick?.pickSelected === team2Id ? stylePick : ''} ${winner && winner !== team2Id ? 'grayscale bg-slate-200/20' : ''}`
   >
     <Team teamId={team2Id} conference={conference} />
   </div>
