@@ -17,7 +17,11 @@ interface Props {
 
 const { team1Id, team2Id, conference, matchId, roundName, winner, class: className, colStart, colEnd } = Astro.props;
 
-
+if (Astro.cookies.has(`playoffs-prediction:${roundName}`)) {
+  console.log('Exists the cookie 🍪')
+  const cookie = Astro.cookies.get(`playoffs-prediction:${roundName}`)
+  console.log(cookie)
+}
 const predictions: PredictionPick[] | [] = Astro.cookies.get(`playoffs-prediction:${roundName}`)?.json() ?? []
 
 const predictionPick: PredictionPick | null = predictions.find((prediction: PredictionPick) => prediction.matchId === matchId) ?? null
