@@ -9,10 +9,10 @@ import Button from "@/components/Button.astro";
 	description="Predicción de los NFL playoffs 2024"
 >
 	<div
-		class="min-h-screen bg-cover bg-center"
+		class="dynamic__height bg-cover bg-center"
 		style="background-image: url('/lasvegas.jpg')">
 		<div class="absolute inset-0 bg-gradient-to-b from-primary2 via-secundary/65 to-primary1/40"/>
-		<main class="relative min-h-screen flex flex-col justify-center items-center">
+		<main class="relative dynamic__height flex flex-col justify-center items-center">
 			<!-- TODO: use i18n dependecy from astro in the future for copies -->
 			<LasVegasSign/>
 			<Button
