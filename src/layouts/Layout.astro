@@ -1,5 +1,5 @@
 ---
-// import { ViewTransitions } from 'astro:transitions';
+import { ViewTransitions } from 'astro:transitions';
 
 interface Props {
 	description: string;
@@ -18,13 +18,15 @@ const { currentLocale } = Astro;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<title>{title}</title>
-		<!-- <slot name="preload" />
+		<!-- <slot name="preload" /> -->
 
-		<ViewTransitions /> -->
+		<ViewTransitions />
 	</head>
 
-	<body>
-		<slot />
+	<body transition:animate="none">
+		<div transition:animate="slide">
+			<slot />
+		</div>
 
 		<!-- Global styles -->
 		<style is:global>

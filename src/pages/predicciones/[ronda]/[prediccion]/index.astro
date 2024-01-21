@@ -78,11 +78,11 @@ if(Astro.request.method === 'POST') {
 // Componetized ✅
 // add the trophy for each round ✅
 // responsive design ✅
+// fix the responsive design ✅
+// deploy the project to vercel ✅
 // fix the performance in mobile (check VT API or the ssr try to separete as astro says in the docs)
-// fix the responsive design
 // fix the icons for rounds
 // add the option to edit the pick in he playoffs page
-// deploy the project to vercel
 // add the results (correct picks)
 // add some fireworks when scroll to the superbowl (for scroll maybe add the results at the beginning)
 // Use a react component for the form maybe
@@ -104,7 +104,7 @@ if(Astro.request.method === 'POST') {
       <form method="POST">
         <fieldset>
           <legend class="sr-only">Selecciona tu pick para esté duelo</legend>
-          <div class="min-h-screen grid sm:grid-cols-2">
+          <div class="dynamic__height grid sm:grid-cols-2">
             <!-- 2 Options-->
             {
               teamsMatch.map((teamId) => {
