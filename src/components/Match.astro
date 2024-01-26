@@ -24,7 +24,6 @@ let predictionPick: PredictionPick | null = null;
 const stylePick = "bg-green-300/10 drop-shadow-[0_10px_20px_#527853]"
 
 if (Astro.cookies.has(cookieKey)) {
-  console.log('Exists the cookie 🍪')
   predictions = Astro.cookies.get(`playoffs-prediction:${roundName}`)?.json() ?? []
   predictionPick = predictions.find((prediction: PredictionPick) => prediction.matchId === matchId) ?? null
 }
