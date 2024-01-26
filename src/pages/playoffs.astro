@@ -43,25 +43,25 @@ import Button from "@/components/Button.astro";
       <main class="mt-12">
         <!-- WildCard Round -->
         <section class="grid xl:grid-cols-[1fr_auto_1fr] gap-x-12 gap-y-5">
-          <span class="inline-flex justify-center xl:hidden">
-            <WildCard />
-          </span>
+          <picture class="inline-flex max-w-20 justify-center items-center xl:hidden">
+            <img src="./wildcard.webp" alt="Logo Ronda de Wild Card" class="max-w-full object-contain">
+          </picture>
           <Bracket roundName="wild-card" conference="AFC" colStart={1} />
-          <span class="hidden xl:inline-block">
-            <WildCard />
-          </span>
+          <picture class="hidden xl:inline-flex max-w-20 justify-center items-center">
+            <img src="./wildcard.webp" alt="Logo Ronda de Wild Card" class="max-w-full object-contain">
+          </picture>
           <Bracket roundName="wild-card" conference="NFC" colStart={1} />
         </section>
 
         <!-- Divisional Round -->
         <section class="mt-14 xl:mt-6 grid xl:grid-cols-[1fr_auto_1fr] gap-x-12 gap-y-5">
-          <span class="inline-flex justify-center xl:hidden">
-            <Divisional />
-          </span>
+          <picture class="inline-flex max-w-20 justify-center items-center xl:hidden">
+            <img src="./divisional.webp" alt="Logo de ronda Divisional" class="max-w-full object-contain">
+          </picture>
           <Bracket roundName="divisional" conference="AFC" colStart={3} />
-          <span class="hidden xl:inline-block">
-            <Divisional />
-          </span>
+          <picture class="hidden xl:inline-flex max-w-20 justify-center items-center">
+            <img src="./divisional.webp" alt="Logo de ronda Divisional" class="max-w-full object-contain">
+          </picture>
           <Bracket roundName="divisional" conference="NFC" colStart={3} />
         </section>
 
