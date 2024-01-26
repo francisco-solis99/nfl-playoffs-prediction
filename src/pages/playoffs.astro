@@ -65,17 +65,44 @@ import Button from "@/components/Button.astro";
           <Bracket roundName="divisional" conference="NFC" colStart={3} />
         </section>
 
-        <div class="mt-20 flex justify-center">
+        <!-- Championship Round -->
+        <section class="mt-14 xl:mt-6 grid xl:grid-cols-[1fr_auto_1fr] gap-x-12 gap-y-5">
+          <div class="flex items-center justify-center gap-x-2 xl:hidden">
+            <picture class="inline-flex max-w-20 justify-center items-center">
+              <img src="./afc-championship.webp" alt="Logo AFC Championship" class="max-w-full object-contain">
+            </picture>
+            <picture class="inline-flex max-w-20 justify-center items-center">
+              <img src="./nfc-championship.webp" alt="Logo NFC Championship" class="max-w-full object-contain">
+            </picture>
+          </div>
+          <Bracket roundName="conference" conference="AFC" colStart={5} />
+          <div class="hidden xl:flex items-center gap-x-2">
+            <picture class="inline-flex max-w-20 justify-center items-center">
+              <img src="./afc-championship.webp" alt="Logo AFC Championship" class="max-w-full object-contain">
+            </picture>
+            <picture class="inline-flex max-w-20 justify-center items-center">
+              <img src="./nfc-championship.webp" alt="Logo NFC Championship" class="max-w-full object-contain">
+            </picture>
+          </div>
+          <Bracket roundName="conference" conference="NFC" colStart={5} />
+        </section>
+
+        <section class="mt-8">
+          <div class="flex items-center gap-x-2 justify-center ">
+            <span class="inline-block rounded-full w-8 aspect-square bg-green-300/20 drop-shadow-[0_10px_20px_#527853]"></span>
+            <span>Your pick</span>
+          </div>
+        </section>
+
+        <div class="mt-10 flex justify-center">
           <Button
-            url="/predicciones/divisional/1"
+            url="/predicciones/conference/1"
             target="_self"
             class="text-xl ease-out transition-[background] hover:bg-primary1 drop-shadow-[0_8px_15px_#C5425F]"
           >
             Predecir
           </Button>
         </div>
-
-        <!-- Conference Round -->
 
         <!-- Super Bowl -->
       </main>

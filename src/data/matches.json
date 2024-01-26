@@ -54,13 +54,13 @@
           "id": 1,
           "team1": "HOU",
           "team2": "BAL",
-          "winner": null
+          "winner": "BAL"
         },
         {
           "id": 2,
           "team1": "KC",
           "team2": "BUF",
-          "winner": null
+          "winner": "KC"
         }
       ],
       "NFC": [
@@ -68,12 +68,34 @@
           "id": 3,
           "team1": "GB",
           "team2": "SF",
-          "winner": null
+          "winner": "SF"
         },
         {
           "id": 4,
           "team1": "TB",
           "team2": "DET",
+          "winner": "DET"
+        }
+      ]
+    }
+  },
+  {
+    "round": "Conference",
+    "slug": "conference",
+    "matches": {
+      "AFC": [
+        {
+          "id": 1,
+          "team1": "KC",
+          "team2": "BAL",
+          "winner": null
+        }
+      ],
+      "NFC": [
+        {
+          "id": 2,
+          "team1": "DET",
+          "team2": "SF",
           "winner": null
         }
       ]
