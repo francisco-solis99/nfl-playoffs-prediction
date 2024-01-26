@@ -28,7 +28,7 @@ import Button from "@/components/Button.astro";
   description="Demuestra que sabes de NFL y presumelo con tus amigos, ve y predice los brackets de los NFL playoffs 2024"
 >
   <div
-    class="layer__background relative z-10 min-h-screen py-20 bg-gradient-to-b from-[#220242] via-[#100B34] to-[#07091B] text-white"
+    class="layer__background relative z-10 min-h-screen pt-20 pb-8 bg-gradient-to-b from-[#220242] via-[#100B34] to-[#07091B] text-white"
   >
     <div class="w-11/12 max-w-[1440px] mx-auto">
       <header class="text-center">
@@ -87,6 +87,7 @@ import Button from "@/components/Button.astro";
           <Bracket roundName="conference" conference="NFC" colStart={5} />
         </section>
 
+        <!-- Indicatior and results for picks -->
         <section class="mt-8">
           <div class="flex items-center gap-x-2 justify-center ">
             <span class="inline-block rounded-full w-8 aspect-square bg-green-300/20 drop-shadow-[0_10px_20px_#527853]"></span>
@@ -94,6 +95,7 @@ import Button from "@/components/Button.astro";
           </div>
         </section>
 
+        <!-- Predict button -->
         <div class="mt-10 flex justify-center">
           <Button
             url="/predicciones/conference/1"
@@ -107,7 +109,9 @@ import Button from "@/components/Button.astro";
         <!-- Super Bowl -->
       </main>
 
-      <footer></footer>
+      <footer class="mt-12 text-center">
+        Made with ❤️ by <a href="" rel="noopener nofollow noreferrer" target="_blank">Francisco</a>
+      </footer>
     </div>
   </div>
 </Layout>
