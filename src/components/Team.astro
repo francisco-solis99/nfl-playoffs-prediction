@@ -8,7 +8,7 @@ interface Props {
 }
 
 const { teamId, conference } = Astro.props;
-const team = getTeamById({ id: teamId, conference });
+const team = getTeamById({ id: teamId, conference }) ?? getTeamById({ id: teamId, conference: conference === 'AFC' ? 'NFC' : conference});
 const TeamLogo = await getTeamLogo({teamIdName: team?.id, conference})
 ---
 

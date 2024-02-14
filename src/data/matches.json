@@ -88,7 +88,7 @@
           "id": 1,
           "team1": "KC",
           "team2": "BAL",
-          "winner": null
+          "winner": "KC"
         }
       ],
       "NFC": [
@@ -96,6 +96,20 @@
           "id": 2,
           "team1": "DET",
           "team2": "SF",
+          "winner": "SF"
+        }
+      ]
+    }
+  },
+  {
+    "round": "Super Bowl",
+    "slug": "super-bowl",
+    "matches": {
+      "AFC": [
+        {
+          "id": 1,
+          "team1": "SF",
+          "team2": "KC",
           "winner": null
         }
       ]

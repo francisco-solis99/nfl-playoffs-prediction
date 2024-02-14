@@ -43,7 +43,7 @@ import Button from "@/components/Button.astro";
       <main class="mt-12">
         <!-- WildCard Round -->
         <section class="grid xl:grid-cols-[1fr_auto_1fr] gap-x-12 gap-y-5">
-          <picture class="inline-flex max-w-20 justify-center items-center xl:hidden">
+          <picture class="inline-flex justify-self-center max-w-20 justify-center items-center xl:hidden">
             <img src="./wildcard.webp" alt="Logo Ronda de Wild Card" class="max-w-full object-contain">
           </picture>
           <Bracket roundName="wild-card" conference="AFC" colStart={1} />
@@ -55,7 +55,7 @@ import Button from "@/components/Button.astro";
 
         <!-- Divisional Round -->
         <section class="mt-14 xl:mt-6 grid xl:grid-cols-[1fr_auto_1fr] gap-x-12 gap-y-5">
-          <picture class="inline-flex max-w-20 justify-center items-center xl:hidden">
+          <picture class="inline-flex justify-self-center max-w-20 justify-center items-center xl:hidden">
             <img src="./divisional.webp" alt="Logo de ronda Divisional" class="max-w-full object-contain">
           </picture>
           <Bracket roundName="divisional" conference="AFC" colStart={3} />
@@ -87,8 +87,16 @@ import Button from "@/components/Button.astro";
           <Bracket roundName="conference" conference="NFC" colStart={5} />
         </section>
 
+        <!-- Super Bowl  -->
+        <section class="mt-20 grid gap-x-12 gap-y-5">
+          <picture class="justify-self-center inline-flex max-w-32 justify-center items-center">
+            <img src="./superBowlLVIII.webp" alt="Logo del SuperBowl" class="max-w-full object-contain">
+          </picture>
+          <Bracket roundName="super-bowl" conference="AFC" colStart={5} />
+        </section>
+
         <!-- Indicatior and results for picks -->
-        <section class="mt-8">
+        <section class="mt-14">
           <div class="flex items-center gap-x-2 justify-center ">
             <span class="inline-block rounded-full w-8 aspect-square bg-green-300/20 drop-shadow-[0_10px_20px_#527853]"></span>
             <span>Your pick</span>
@@ -98,15 +106,13 @@ import Button from "@/components/Button.astro";
         <!-- Predict button -->
         <div class="mt-10 flex justify-center">
           <Button
-            url="/predicciones/conference/1"
+            url="/predicciones/super-bowl/1"
             target="_self"
             class="text-xl ease-out transition-[background] hover:bg-primary1 drop-shadow-[0_8px_15px_#C5425F]"
           >
             Predecir
           </Button>
         </div>
-
-        <!-- Super Bowl -->
       </main>
 
       <footer class="mt-12 text-center">
